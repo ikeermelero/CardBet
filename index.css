@@ -1,0 +1,186 @@
+:root {
+  /* Colores base */
+  --c-bg:        #0f1923;
+  --c-bg2:       #172130;
+  --c-bg3:       #1e2d3d;
+  --c-surface:   #243447;
+  --c-border:    rgba(255,255,255,.1);
+  --c-border2:   rgba(255,255,255,.18);
+
+  /* Texto */
+  --c-text:      #f0e8d0;
+  --c-text2:     #a89878;
+  --c-text3:     #6a5f4e;
+
+  /* Acento dorado */
+  --c-gold:      #c9a84c;
+  --c-gold2:     #e8cc7a;
+  --c-gold-bg:   rgba(201,168,76,.12);
+
+  /* Semánticos */
+  --c-success:   #1D9E75;
+  --c-danger:    #E24B4A;
+  --c-info:      #378ADD;
+  --c-warn:      #BA7517;
+
+  /* Felt */
+  --c-felt:      #1a4a2e;
+  --c-felt2:     #235c39;
+
+  /* Tipografía */
+  --font-main:   'DM Mono', 'Courier New', monospace;
+  --font-display:'Playfair Display', Georgia, serif;
+
+  /* Espaciado */
+  --r-sm:  6px;
+  --r-md:  10px;
+  --r-lg:  14px;
+  --r-xl:  20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+a { color: var(--c-gold); text-decoration: none; }
+a:hover { color: var(--c-gold2); }
+
+button {
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-main);
+  background: var(--c-bg3);
+  border: 1px solid var(--c-border2);
+  border-radius: var(--r-md);
+  color: var(--c-text);
+  padding: 10px 14px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color .2s;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--c-gold);
+}
+
+/* Cartas de juego — estilos compartidos */
+.playing-card {
+  width: 52px;
+  height: 74px;
+  border-radius: 6px;
+  background: #fdfaf4;
+  border: 1px solid #d4c9a8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 5px;
+  position: relative;
+  flex-shrink: 0;
+  transition: transform .15s;
+}
+.playing-card.red   { color: #c0392b; }
+.playing-card.black { color: #1a1a1a; }
+.playing-card.hidden {
+  background: repeating-linear-gradient(
+    135deg, #1a3d5c 0 4px, #1e4870 4px 8px
+  );
+  border-color: #2d6a9f;
+}
+.card-corner        { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.card-corner.bottom { transform: rotate(180deg); }
+.card-rank          { font-size: 14px; font-weight: 600; }
+.card-suit          { font-size: 11px; }
+.card-center        { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 22px; }
+
+/* Botones de la plataforma */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  transition: all .15s;
+}
+.btn-primary {
+  background: var(--c-gold);
+  color: #1a0f00;
+  font-weight: 600;
+}
+.btn-primary:hover { background: var(--c-gold2); }
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--c-border2);
+  color: var(--c-gold);
+}
+.btn-secondary:hover { border-color: var(--c-gold); background: var(--c-gold-bg); }
+.btn-danger {
+  background: var(--c-danger);
+  color: #fff;
+}
+.btn:disabled { opacity: .35; cursor: default; pointer-events: none; }
+
+/* Layout principal */
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 56px;
+  background: var(--c-bg2);
+  border-bottom: 1px solid var(--c-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar-brand {
+  font-family: var(--font-display);
+  color: var(--c-gold);
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.navbar-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.navbar-balance {
+  background: var(--c-gold-bg);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: var(--r-md);
+  padding: 4px 14px;
+  color: var(--c-gold2);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Contenedor de vistas */
+#view {
+  flex: 1;
+  padding: 28px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
