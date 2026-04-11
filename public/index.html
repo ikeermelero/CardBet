@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CardBet</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./index.css">
 </head>
+
 <body>
-    <nav class="navbar" id="navbar" >
-      <span class="navbar-brand">♠CardBet</span>
-      <div class="navbar-links">
-        <a href="/contact" class="btn btn-secondary" style="padding:6px 14px;font-size:12px" data-link>Contact</a>
-        <a href="/lobby" class="btn btn-secondary" style="padding:6px 14px;font-size:12px" data-link>Lobby</a>
-        <a href="/ranking" class="btn btn-secondary" style="padding:6px 14px;font-size:12px" data-link>Ranking</a>
-        <span class="navbar-balance"><span id="nav-balance">0</span> fichas</span>
-        <a href="/profile" id="btn-logout" class="btn btn-secondary" style="padding:6px 14px;font-size:12px" data-link>Perfil</a>
-      </div>
-    </nav>
-<div id="app">
+  <nav class="navbar" id="navbar">
+    <span class="navbar-brand">♠CardBet</span>
+    <div class="navbar-links">
+      <a href="/contact" class="btn btn-secondary" style="padding:6px 14px;font-size:12px" data-link>Contact</a>
+      <a href="/lobby" class="btn btn-secondary" style="padding:6px 14px;font-size:12px" data-link>Lobby</a>
+      <a href="/ranking" class="btn btn-secondary" style="padding:6px 14px;font-size:12px" data-link>Ranking</a>
+      <span class="navbar-balance"><span id="nav-balance">0</span> fichas</span>
+      <a href="/profile" class="btn btn-secondary" style="padding:6px 14px;font-size:12px;margin-left:16px" data-link>Perfil</a>
+    </div>
+  </nav>
+  <div id="app"></div>
+</body>
+<script type="module" src="./app.js"></script>
+</html>
+
+
   <!-- Navbar — oculto en login/register -->
   <!-- <nav class="navbar" id="navbar" style="display:none">
     <span class="navbar-brand">♠ Card Platform</span>
@@ -55,7 +64,3 @@
       </div>
     </div>
   </main> -->
-</div>
-</body>
-<script type="module" src="./app.js"></script>
-</html>

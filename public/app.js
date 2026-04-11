@@ -1,12 +1,5 @@
-// ============================================================
-//  app.js
-//
-//  Punto de entrada de la aplicación.
-//  Se ejecuta cuando el navegador carga index.html.
-//  Su única responsabilidad es arrancar el router.
-// ============================================================
-
-import { router } from './router.js'
+import { router, setAuthStatus } from './router.js'
+import { clearSession } from './features/auth/auth.repository.js' // Importar handlers de autenticación
 
 document.addEventListener('DOMContentLoaded', () =>{
   router(location.pathname);
@@ -21,6 +14,17 @@ function navigateTo(url) {
 
 //  Click en enlaces
 document.addEventListener("click", (e) => {
+  // Logout desde el navbar principal (si existe)
+  if (e.target.id === "btn-logout-navbar") {
+    e.preventDefault();
+    if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+      clearSession();
+      setAuthStatus(false);
+      navigateTo("/login");
+    }
+    return;
+  }
+
   if (e.target.matches("[data-link]")) {
     e.preventDefault();
     navigateTo(e.target.href);
@@ -31,63 +35,3 @@ document.addEventListener("click", (e) => {
 window.addEventListener("popstate", () => {
   router(location.pathname);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Cuando el DOM esté listo, arrancamos el router
-/* document.addEventListener('DOMContentLoaded', () => {
-
-  // 1. Ejecutamos el router para la URL actual
-  router()
-
-  // 2. Interceptamos los clics en enlaces con [data-link]
-  //    para que no recarguen la página (navegación SPA)
-  document.addEventListener('click', (event) => {
-    // Buscamos si el elemento clicado (o algún padre) tiene data-link
-    const link = event.target.closest('[data-link]')
-    if (!link) return
-
-    event.preventDefault()          // cancelamos la navegación nativa del browser
-    navigate(link.getAttribute('href'))  // usamos nuestro router
-  })
-
-  // 3. Escuchamos el botón "atrás/adelante" del navegador
-  //    popstate se dispara cuando el usuario navega en el historial
-  window.addEventListener('popstate', () => {
-    router()
-  })
-
-}) */

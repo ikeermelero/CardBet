@@ -175,6 +175,15 @@ input:focus, select:focus {
   font-size: 14px;
   font-weight: 500;
 }
+.navbar-user {
+  color: var(--c-text2);
+  font-size: 14px;
+  margin-right: 8px;
+  padding: 4px 12px;
+  background: var(--c-bg3);
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-border);
+}
 
 /* Contenedor de vistas */
 #view {

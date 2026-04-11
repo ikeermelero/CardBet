@@ -38,10 +38,13 @@ app.post('/api/register', async (req, res) => {
     return res.status(400).json({ error: 'Faltan campos' });
   try {
     const hash = await bcrypt.hash(password, 10);
+    const role = 2;
+    const berrys = 100; // Berrys iniciales
+    const victories = 0;
     const [result] = await pool.execute(
-      'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
-      [username, email, hash]
-    );
+        'INSERT INTO users (username, role, email, password, berrys, victories) VALUES (?, ?, ?, ?, ?, ?)',
+        [username, role, email, hash, berrys, victories]
+      );
     res.json({ message: 'Usuario creado', id: result.insertId });
   } catch (e) {
     if (e.code === 'ER_DUP_ENTRY')
@@ -62,7 +65,14 @@ app.post('/api/login', async (req, res) => {
       { id: user.id, username: user.username, email: user.email },
       JWT_SECRET, { expiresIn: '24h' }
     );
-    res.json({ token, user: { id: user.id, username: user.username, email: user.email } });
+    res.json({ token, 
+      user: { 
+        id: user.id, 
+        username: user.username, 
+        email: user.email,
+        berrys: user.berrys,
+        victories: user.victories,
+      } });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
