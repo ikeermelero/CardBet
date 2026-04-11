@@ -1,0 +1,30 @@
+{
+  "name": "cardbet",
+  "version": "1.0.0",
+  "description": "Plataforma de juegos de cartas en el navegador, construida con JavaScript nativo (ES Modules), sin frameworks frontend, con persistencia en MySQL/MariaDB a través de una API mínima en Node.js.",
+  "main": "public/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikeermelero/CardBet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ikeermelero/CardBet/issues"
+  },
+  "homepage": "https://github.com/ikeermelero/CardBet#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.22.0",
+    "sql": "^0.78.0"
+  }
+}
